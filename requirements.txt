@@ -3,17 +3,17 @@ streamlit==1.50.0
 numpy==1.26.4
 opencv-python-headless==4.10.0.84
 
-ultralytics==8.3.0
 torch==2.3.1
 torchvision==0.18.1
 
+ultralytics==8.3.0
+
 mediapipe==0.10.21
 
-streamlit-webrtc==0.62.4
 av==12.3.0
+streamlit-webrtc==0.62.4
 
 gTTS==2.5.4
-pygame==2.6.1
 
 pillow==11.3.0
 requests==2.32.5
