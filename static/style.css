@@ -1,9 +1,33 @@
-body {
-    font-family: Arial;
-    background: #f4f4f4;
+.title {
+    color: #911212 !important; 
     text-align: center;
 }
 
-h1 {
-    color: blue;
+
+.desc {
+    text-align: center;
+    color: rgb(221, 29, 255);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f70404;
+    text-align: center;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+button {
+    background: #2c6cff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1c4ed8;
 }
