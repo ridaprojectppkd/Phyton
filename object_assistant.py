@@ -16,12 +16,21 @@ if not pygame.mixer.get_init():
     pygame.mixer.init()
 
 audio_lock = threading.Lock()
+def stop_speech():
+    """Menghentikan audio yang sedang diputar"""
+    try:
+        if pygame.mixer.get_init():
+            pygame.mixer.music.stop()
+            pygame.mixer.music.unload()
+    except:
+        pass
 
 def speak(text):
     """Text-to-speech aman (no overlap)"""
     def run():
         with audio_lock:
             try:
+                stop_speech()  # hentikan suara sebelumnya
                 filename = f"voice_{int(time.time()*1000)}.mp3"
 
                 tts = gTTS(text=text, lang='id')
@@ -191,6 +200,7 @@ def run_assistant():
         },
         async_transform=True
     )
+       
 
 # =========================
 # RUN

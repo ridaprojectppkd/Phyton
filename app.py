@@ -1,6 +1,6 @@
 import streamlit as st
-from sign_language import run_sign
-from object_assistant import run_assistant
+from sign_language import run_sign, stop_speech as stop_sign
+from object_assistant import run_assistant, stop_speech as stop_object
 
 # 🔥 MATIKAN MENU DEFAULT STREAMLIT
 st.set_page_config(
@@ -25,8 +25,11 @@ menu = st.sidebar.radio(
     ["Home", "Object Detection", "Sign Language"]
 )
 
-# ✅ PAGE CONTENT
+# =========================
+# HOME
+# =========================
 if menu == "Home":
+
     st.markdown("""
     <style>
     .hero {
@@ -72,16 +75,17 @@ if menu == "Home":
     </div>
 
     <div class="card-container">
+
         <div class="card">
             <a href="?page=object">
                 <h3>👁 Object Detection</h3>
                 <p>Deteksi objek secara real-time</p>
             </a>
         </div>
-                
+
         <div class="card">
             <a href="?page=sign">
-                <h3>🤟 Sign Language</h3 >
+                <h3>🤟 Sign Language</h3>
                 <p>Terjemahkan bahasa isyarat</p>
             </a>
         </div>
@@ -93,13 +97,27 @@ if menu == "Home":
     query = st.query_params
 
     if query.get("page") == "object":
+        stop_sign()
+        stop_object()
         run_assistant()
 
     elif query.get("page") == "sign":
+        stop_object()
+        stop_sign()
         run_sign()
 
+# =========================
+# OBJECT DETECTION
+# =========================
 elif menu == "Object Detection":
+    stop_sign()
+    stop_object()
     run_assistant()
 
+# =========================
+# SIGN LANGUAGE
+# =========================
 elif menu == "Sign Language":
+    stop_object()
+    stop_sign()
     run_sign()

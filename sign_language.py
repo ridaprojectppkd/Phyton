@@ -9,10 +9,16 @@ import time
 # =========================
 engine = pyttsx3.init()
 
+def stop_speech():
+    try:
+        engine.stop()
+    except:
+        pass
+
 def speak(text):
+    stop_speech()      # hentikan suara sebelumnya
     engine.say(text)
     engine.runAndWait()
-
 # =========================
 # CEK JARI
 # =========================
@@ -210,6 +216,7 @@ def run_sign():
             last_text = final_text
             last_time = current_time
 
+    stop_speech()      # hentikan suara
     camera.release()
 
 
